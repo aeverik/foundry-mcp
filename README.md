@@ -51,13 +51,13 @@ Each tool and feature is rigorously tested using the MCP Inspector and other deb
 
 In order to build a knowledge base, allow for audits, and preserve the generation process, the agent will use git commits to log its generations. The following process will be followed for each prompt execution:
 
-1. **Branch Creation**: A new git branch will be created for each prompt execution.
+1. **Branch Creation**: A new git branch will be created for each prompt execution automatically.
 2. **Commit Message**: The commit message will include:
    - The user prompt from the Copilot chat.
    - A full list of context used.
    - Output in the GitHub Copilot chat.
    - An explanation of the changes and the reasoning behind them.
-3. **User Approval**: After proposing changes, the agent will ask the user if the changes are acceptable.
+3. **User Approval for Merge**: After proposing changes, the agent will ask the user for permission to merge the branch into the main branch. The agent will not ask for permission to create the branch or commit changes.
 4. **Revisions**: If the user rejects the changes, the agent will revise them in the current side branch and create a new commit. This process will continue until the user accepts the changes.
 5. **Merge**: Once the user accepts the changes, the branch will be merged into the main branch.
 

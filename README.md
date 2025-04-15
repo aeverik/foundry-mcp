@@ -51,6 +51,19 @@ Each tool and feature is rigorously tested using the MCP Inspector and other deb
 
 **IMPORTANT**: The agent must always verify its current branch before executing any task. If the agent is on the `main` branch, it must immediately check out to a new branch before proceeding. This ensures that no changes are ever committed directly to the `main` branch.
 
+### Checking the Current Branch
+
+The agent must always verify its current branch before executing any task. To do this, the agent should use the `git` MCP server instead of the command line. This ensures consistency and avoids unnecessary reliance on external tools.
+
+#### Steps to Check the Current Branch:
+1. Use the `git` MCP server to retrieve the current branch name.
+2. If the current branch is `main`, the agent must:
+   - Create a new branch with a descriptive name.
+   - Switch to the new branch.
+3. Proceed with the task only after switching to the new branch.
+
+This process ensures that no changes are ever committed directly to the `main` branch, maintaining a clean and auditable git history.
+
 #### Steps to Follow:
 1. **Check Current Branch**: Before executing any task, the agent must run a command to determine the current branch.
 2. **Create a New Branch if on `main`**: If the current branch is `main`, the agent must:

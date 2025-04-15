@@ -1,0 +1,9 @@
+[submodule "reference/foundry"]
+	path = reference/foundry
+	url = https://github.com/foundry-rs/foundry
+[submodule "reference/book"]
+	path = reference/book
+	url = https://github.com/foundry-rs/book
+[submodule "reference/uv"]
+	path = reference/uv
+	url = https://github.com/modelcontextprotocol/servers

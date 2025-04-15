@@ -47,6 +47,19 @@ The MCP server is designed to utilize key MCP features, including:
 ### Step 6: Testing and Validation
 Each tool and feature is rigorously tested using the MCP Inspector and other debugging tools. The server is validated against the MCP specification to ensure compliance.
 
+### Supreme Rule: Avoid Committing Directly to `main`
+
+**IMPORTANT**: The agent must always verify its current branch before executing any task. If the agent is on the `main` branch, it must immediately check out to a new branch before proceeding. This ensures that no changes are ever committed directly to the `main` branch.
+
+#### Steps to Follow:
+1. **Check Current Branch**: Before executing any task, the agent must run a command to determine the current branch.
+2. **Create a New Branch if on `main`**: If the current branch is `main`, the agent must:
+   - Create a new branch with a descriptive name.
+   - Switch to the new branch.
+3. **Proceed with Task**: Only after switching to a new branch should the agent proceed with executing the task.
+
+This rule is critical to maintaining a clean and auditable git history. Violating this rule can lead to confusion and potential loss of traceability.
+
 ### Git Commit Logging for Generations
 
 In order to build a knowledge base, allow for audits, and preserve the generation process, the agent will use git commits to log its generations. The following process will be followed for each prompt execution:
